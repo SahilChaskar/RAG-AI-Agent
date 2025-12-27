@@ -47,7 +47,7 @@ export default function ChatMessage({ message, onCitationClick, isLast }: Props)
     message.text || "",
     enableTyping,
     done,
-    70 // tweak speed if you want
+    60 
   );
 
   const supporting = message.supportingEvidence;
@@ -99,7 +99,6 @@ export default function ChatMessage({ message, onCitationClick, isLast }: Props)
                 if (!src) return <li key={i}>Unknown source</li>;
                 const title = src.title || src.id || src.name || "Document";
                 const url = src.url || src.link;
-                const page = src.page ? ` (p. ${src.page})` : "";
                 return (
                   <li key={i} className="citation-item">
                     {url ? (
@@ -112,11 +111,11 @@ export default function ChatMessage({ message, onCitationClick, isLast }: Props)
                             : `Open ${title}`
                         }
                       >
-                        {title}{page}
+                        {title}
                         <span style={{ marginLeft: 6, display: "inline-flex", alignItems: "center" }}>📄</span>
                       </button>
                     ) : (
-                      <span className="citation-text">{title}{page}</span>
+                      <span className="citation-text">{title}</span>
                     )}
                   </li>
                 );
